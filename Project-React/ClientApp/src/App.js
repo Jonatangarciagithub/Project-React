@@ -1,22 +1,39 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import Tarjeta from "./Componentes/Tarjeta";
+import { useState } from "react";
 
 const App = () => {
+    const [numero, setNumero]=useState(0)
+
+    let modelopersona={
+        Nombre:"Jonatan",
+        Apellido:"Garcia",
+        Correo:"jogatrabajo5@gmail.com"
+    }
+    const [persona, setPersona]=useState(modelopersona)
     return (
         <div className="container-fluid">
-           <div className="row justify-content-sm-center">
-            <div className="col-sm-4">
-                <Tarjeta titulo= "Esto es un titulo"
-                parrafo="Esto deberia ser un parrafo"
-                textoboton="Suscribirse">
-                    <a href="#" className="btn btn-success"> Texto boton</a>
-                </Tarjeta>
-
-
-            </div>
-           </div>
-
+            <h1>Esto es un conteo: {numero}</h1>
+            <button
+            onClick={()=> setNumero(numero +1)}
+            >Sumar + 1</button>
+            <br></br>
+            <br></br>
+            <p>Nombre: {persona.Nombre}</p>
+            <p>Apellido: {persona.Apellido}</p>
+            <p>Correo: {persona.Correo}</p>
+            <button
+            onClick={()=> setPersona({
+                ...persona,
+                Apellido:"Garcia Valencia",
+                Correo:"jonatan.garcia@pascualbravo.edu.co"
+            })}
+            >Cambiar correo y apellidos</button>
+           
         </div>
+        
+        
+
+        
     )
 }
 
