@@ -1,33 +1,29 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
-    const [numero, setNumero]=useState(0)
+    const [Nombre, setNombre]=useState("Pedro")
 
-    let modelopersona={
-        Nombre:"Jonatan",
-        Apellido:"Garcia",
-        Correo:"jogatrabajo5@gmail.com"
+    const EscribirenConsolo=()=>{
+        setNombre("Maria")
+        console.log("El nombre ha cambiado a " + Nombre)
     }
-    const [persona, setPersona]=useState(modelopersona)
+
+    useEffect(()=>{
+        console.log("2.El nombre ha cambiado a " + Nombre)
+    },[Nombre])
+
+    useEffect(()=>{
+        console.log("La aplicacion a comenzado")
+    },[])//Estos es muy necesario para tomar recursos al iniciar aplicaciones
+
+
     return (
         <div className="container-fluid">
-            <h1>Esto es un conteo: {numero}</h1>
+            <h1>Esto es un conteo: {Nombre}</h1>
             <button
-            onClick={()=> setNumero(numero +1)}
-            >Sumar + 1</button>
-            <br></br>
-            <br></br>
-            <p>Nombre: {persona.Nombre}</p>
-            <p>Apellido: {persona.Apellido}</p>
-            <p>Correo: {persona.Correo}</p>
-            <button
-            onClick={()=> setPersona({
-                ...persona,
-                Apellido:"Garcia Valencia",
-                Correo:"jonatan.garcia@pascualbravo.edu.co"
-            })}
-            >Cambiar correo y apellidos</button>
+            onClick={EscribirenConsolo}
+            >Cambiar Nombre</button>
            
         </div>
         
